@@ -4,14 +4,14 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const config = require('dotenv').config();
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
 
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/ticket');
 
 const app = express();
+
+
+
 
 
 
@@ -26,9 +26,36 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsDoc = require('swagger-jsdoc');
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "LogRocket Express API with Swagger",
+      version: "1.0.0",
+      description:
+        "This is a simple CRUD API application made with Express and documented with Swagger",
+    },
+    servers: [
+      {
+        url: "http://localhost:3000",
+      },
+    ],
+  },
+  apis: ["./routes/*.js"],
+};
+const swaggerSpec=swaggerJsDoc(options)
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+
+
+
+
+
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 app.use(function (req, res, next) {
   next(createError(404));

@@ -1,12 +1,12 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-const Doctor=require('../model/doctor')
-const Client=require('../model/client')
 
-router.post('/', function (req, res) {
+router.post("/", function (req, res) {
+    console.log('hereeeeeeeeeeeeeeeee');
   res.json({
     result: req.body,
   });
 });
+
 
 module.exports = router;
