@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const ticket=require('./ticket')
+const doctor=require('./doctor')
 
-router.use('/ticket', ticket);
+router.use('/doctor', doctor);
 
 module.exports = router;
