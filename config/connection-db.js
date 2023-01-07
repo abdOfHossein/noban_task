@@ -15,14 +15,14 @@ const db = new Sequelize(database, username, pass, {
     idle: 10000,
   },
 });
-async function checkConnection() {
-  try {
-    await db.authenticate();
-    console.log('Connected To Db ....');
-  } catch (e) {
-    console.log(`Can not Connect To Db Err ===>${e}`);
-    throw e;
-  }
-}
-checkConnection()
+// async function checkConnection() {
+//   try {
+//     await db.authenticate();
+//     console.log('Connected To Db ....');
+//   } catch (e) {
+//     console.log(`Can not Connect To Db Err ===>${e}`);
+//     throw e;
+//   }
+// }
+// checkConnection()
 module.exports = db;
