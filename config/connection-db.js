@@ -7,7 +7,7 @@ const database = process.env.DB_NAME;
 
 const db = new Sequelize(database, username, pass, {
   host: 'localhost',
-  dialect: 'mysql',
+  dialect: 'postgres',
   pool: {
     max: 5,
     min: 0,

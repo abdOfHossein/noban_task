@@ -23,6 +23,4 @@ const Doctor = db.define("doctor", {
 });
 
 // Doctor.sync();
-Doctor.belongsToMany(Client, { through: 'Doctor_Client' });
-Client.belongsToMany(Doctor, { through: 'Doctor_Client' });
 module.exports = Doctor;
