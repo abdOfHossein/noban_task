@@ -1,5 +1,5 @@
 module.exports = function Response(res, success, result) {
-  return res.statusCode(200).json({
+  return res.status(200).json({
     success,
     result,
   });

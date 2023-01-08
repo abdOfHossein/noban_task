@@ -7,7 +7,7 @@ const database = process.env.DB_NAME;
 
 const db = new Sequelize(database, username, pass, {
   host: 'localhost',
-  dialect: 'postgres',
+  dialect: 'mysql',
   pool: {
     max: 5,
     min: 0,
@@ -19,10 +19,12 @@ async function checkConnection() {
   try {
     await db.authenticate();
     console.log('Connected To Db ....');
+    return db;
   } catch (e) {
     console.log(`Can not Connect To Db Err ===>${e}`);
-    throw e;
+    return e;
   }
 }
-checkConnection()
+checkConnection();
+
 module.exports = db;

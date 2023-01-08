@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
     return response(res, true, req.body);
   } catch (e) {
     console.log(e);
-    throw Err(res, 500, 'something is wrong');
+    return Err(res, 500, 'something is wrong');
   }
 });
 

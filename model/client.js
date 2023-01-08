@@ -28,6 +28,6 @@ const Client = db.define("client", {
   },
 });
 
-// Client.sync();
+Client.sync();
 
 module.exports = Client;
